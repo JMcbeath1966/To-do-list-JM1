@@ -16,14 +16,17 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from todo.views import get_todo_list, add_item, edit_item
+from todo import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_todo_list, name='get_todo_list'),
-    path('add', add_item, name='add'),
-    path('edit/<item_id>', edit_item, name='edit') # django syntax item ID is used to make its way from links or forms in to templates
+    path('', views.get_todo_list, name='get_todo_list'),
+    path('add', views.add_item, name='add'),
+    path('edit/<item_id>', views.edit_item, name='edit'), # django syntax item ID is used to make its way from links or forms in to templates
+    path('toggle/<item_id>', views.toggle_item, name='toggle'),
+    path('delete/<item_id>', views.delete_item, name='delete')
 ]
+
 
 
